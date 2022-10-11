@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Joystick : MonoBehaviour {
-    public Transform player;
     public float speed = 5.0f;
+    public Transform player;
+
     private bool touchStart = false;
     private Vector2 pointA;
     private Vector2 pointB;
@@ -12,10 +13,11 @@ public class Joystick : MonoBehaviour {
     public Transform circle;
     public Transform outerCircle;
 
-	// Update is called once per frame
-	void Update () {
-        if(Input.GetMouseButtonDown(0)){
-            pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+	void Update () 
+    {
+        if(Input.GetMouseButtonDown(0)) // button down and holded
+        {
+            pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z)); // get the finger position on screen.
 
             // place UI elements to pointA * -1 , corresponding to where the player clicked
             circle.transform.position = pointA * -1;
